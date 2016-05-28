@@ -1,0 +1,16 @@
+Package: rflann
+Type: Package
+Title: Basic R Interface To The FLANN C++ Library
+Version: 1.0
+Date: 2016-05-28
+Author: Marius Muja, David Lowe and Jeremy Yee
+Maintainer: Jeremy Yee <jeremyyee@outlook.com.au>
+Description: Basic R interface for the FLANN C++ library written by Marius Muja and David Lowe.
+             This package was written primarily for another package, 'rcss'. This packages utilises
+             a few features from the FLANN C++ library. When I have time (and if there is sufficient
+             demand), I will add more functions. 
+License: GPL
+Imports: Rcpp (>= 0.11.6)
+LinkingTo: Rcpp, RcppArmadillo
+NeedsCompilation: yes
+Packaged: 2016-05-28 06:34:03 UTC; jeremyyee

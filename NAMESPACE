@@ -1,0 +1,3 @@
+useDynLib(rflann)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
