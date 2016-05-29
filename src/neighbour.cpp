@@ -8,13 +8,13 @@
 
 Rcpp::List Neighbour(Rcpp::NumericMatrix query_,
                      Rcpp::NumericMatrix ref_,
-                     std::size_t k,
+                     int k,
                      std::string build,
-                     std::size_t cores,
-                     std::size_t checks) {
-  std::size_t n_dim = query_.ncol();
-  std::size_t n_query = query_.nrow();
-  std::size_t n_ref = ref_.nrow();
+                     int cores,
+                     int checks) {
+  const std::size_t n_dim = query_.ncol();
+  const std::size_t n_query = query_.nrow();
+  const std::size_t n_ref = ref_.nrow();
   // Column major to row major
   arma::mat query(n_dim, n_query);
   {
@@ -68,13 +68,13 @@ BEGIN_RCPP
         query_(query_SEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type
         ref_(ref_SEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type
+    Rcpp::traits::input_parameter< int >::type
         k(kSEXP);
     Rcpp::traits::input_parameter< std::string >::type
         build(buildSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type
+    Rcpp::traits::input_parameter< int >::type
         cores(coresSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type
+    Rcpp::traits::input_parameter< int >::type
         checks(checksSEXP);
     __result = Rcpp::wrap(Neighbour(query_, ref_, k, build, cores, checks));
     return __result;

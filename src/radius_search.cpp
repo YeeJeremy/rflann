@@ -10,10 +10,10 @@
 Rcpp::List RadiusSearch(Rcpp::NumericMatrix query_,
                         Rcpp::NumericMatrix ref_,
                         double radius,
-                        std::size_t max_neighbour,
+                        int max_neighbour,
                         std::string build,
-                        std::size_t cores,
-                        std::size_t checks) {
+                        int cores,
+                        int checks) {
   const std::size_t n_dim = query_.ncol();
   const std::size_t n_query = query_.nrow();
   const std::size_t n_ref = ref_.nrow();
@@ -73,13 +73,13 @@ BEGIN_RCPP
         ref_(ref_SEXP);
     Rcpp::traits::input_parameter< double >::type
         radius(radiusSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type
+    Rcpp::traits::input_parameter< int >::type
         max_neighbour(max_neighbourSEXP);
     Rcpp::traits::input_parameter< std::string >::type
         build(buildSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type
+    Rcpp::traits::input_parameter< int >::type
         cores(coresSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type
+    Rcpp::traits::input_parameter< int >::type
         checks(checksSEXP);
     __result = Rcpp::wrap(RadiusSearch(query_, ref_, radius,
                                        max_neighbour, build, cores, checks));
