@@ -76,7 +76,6 @@ struct Serializer<type>\
     }\
 }
 
-
 // declare serializers for simple types
 BASIC_TYPE_SERIALIZER(char);
 BASIC_TYPE_SERIALIZER(unsigned char);
@@ -86,11 +85,17 @@ BASIC_TYPE_SERIALIZER(int);
 BASIC_TYPE_SERIALIZER(unsigned int);
 BASIC_TYPE_SERIALIZER(long);
 BASIC_TYPE_SERIALIZER(unsigned long);
+BASIC_TYPE_SERIALIZER(unsigned long long);
 BASIC_TYPE_SERIALIZER(float);
 BASIC_TYPE_SERIALIZER(double);
 BASIC_TYPE_SERIALIZER(bool);
-
-
+#ifdef _MSC_VER
+// unsigned __int64 ~= unsigned long long
+// Will throw error on VS2013
+#if _MSC_VER < 1800
+BASIC_TYPE_SERIALIZER(unsigned __int64);
+#endif
+#endif
 
 // serializer for std::vector
 template<typename T>
