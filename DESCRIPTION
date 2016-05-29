@@ -1,6 +1,6 @@
 Package: rflann
 Type: Package
-Title: Basic R Interface To The FLANN C++ Library
+Title: Basic R Interface to the FLANN C++ Library
 Version: 1.0
 Date: 2016-05-28
 Author: Marius Muja, David Lowe and Jeremy Yee
