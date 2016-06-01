@@ -3,18 +3,21 @@
 \title{K nearest neighbours}
 \description{K nearest neighbours}
 \usage{
-Neighbour(query, ref, k, build, cores, checks)
+Neighbour(query, ref, k, build = "kdtree", cores = 0, checks = 1)
 }
 \arguments{
-  \item{query}{Matrix containing the set of query points where each
-    row represents a point.}
-  \item{ref}{Matrix containing the set of reference points where each
-    row represents a point.}
+  \item{query}{Matrix or data frame containing the set of query points
+    where each row represents a point.}
+  \item{ref}{Matrix or data frame containing the set of reference points
+    where each row represents a point.}
   \item{k}{Number of nearest neighbours to search for.}
   \item{build}{String indicating the search structure to be used:
-    "kdtree", "kmeans", "linear"}
-  \item{cores}{Number of cpu cores to be used for searching.}
-  \item{checks}{Number of checks during searching.}
+    "kdtree", "kmeans", "linear"}.
+  \item{cores}{Number of cpu cores to be used for searching. If 0, then
+    the maximum allowable cores are used.}
+  \item{checks}{Number of checks during searching. Higher value gives
+    better search precision but takes longer. See FLANN C++ manual for
+    more details.}
 }
 \value{
   List containing:
