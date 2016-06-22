@@ -1,14 +1,12 @@
 Package: rflann
 Type: Package
 Title: Basic R Interface to the FLANN C++ Library
-Version: 1.1.2
-Date: 2016-05-28
+Version: 1.2
+Date: 2016-06-22
 Author: Marius Muja, David Lowe and Jeremy Yee
 Maintainer: Jeremy Yee <jeremyyee@outlook.com.au>
 Description: Basic R interface for the FLANN C++ library written by Marius Muja and David Lowe.
-             This package was written primarily for another package, 'rcss'. This packages utilises
-             a few features from the FLANN C++ library. When I have time (and if there is sufficient
-             demand), I will add more functions.
+             Nearest neighbours searching and radius searching.
 URL: https://github.com/YeeJeremy/rflann
 License: GPL
 Imports: Rcpp (>= 0.11.6)
