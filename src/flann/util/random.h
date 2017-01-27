@@ -35,6 +35,7 @@
 #include <cstdlib>
 #include <cstddef>
 #include <vector>
+#include <Rcpp.h>
 
 #include "flann/general.h"
 
@@ -47,7 +48,7 @@ namespace flann
  */
 inline void seed_random(unsigned int seed)
 {
-    srand(seed);
+  //srand(seed);
 }
 
 /*
@@ -61,7 +62,8 @@ inline void seed_random(unsigned int seed)
  */
 inline double rand_double(double high = 1.0, double low = 0)
 {
-    return low + ((high-low) * (std::rand() / (RAND_MAX + 1.0)));
+  //return low + ((high-low) * (std::rand() / (RAND_MAX + 1.0)));
+  return low + ((high - low) * R::runif(0, 1));
 }
 
 /**
@@ -72,7 +74,8 @@ inline double rand_double(double high = 1.0, double low = 0)
  */
 inline int rand_int(int high = RAND_MAX, int low = 0)
 {
-    return low + (int) ( double(high-low) * (std::rand() / (RAND_MAX + 1.0)));
+  //return low + (int) ( double(high-low) * (std::rand() / (RAND_MAX + 1.0)));
+  return low + (int) ( double(high-low) * R::runif(0, 1));
 }
 
 

@@ -51,6 +51,9 @@
 #include "flann/util/dynamic_bitset.h"
 #include "flann/util/matrix.h"
 
+#include <Rcpp.h>
+inline int randWrapper(const int n) { return floor(R::unif_rand()*n); }
+
 namespace flann
 {
 
@@ -364,7 +367,7 @@ inline LshTable<unsigned char>::LshTable(unsigned int feature_size, unsigned int
     // A bit brutal but fast to code
     std::vector<size_t> indices(feature_size * CHAR_BIT);
     for (size_t i = 0; i < feature_size * CHAR_BIT; ++i) indices[i] = i;
-    std::random_shuffle(indices.begin(), indices.end());
+    std::random_shuffle(indices.begin(), indices.end(), randWrapper);
 
     // Generate a random set of order of subsignature_size_ bits
     for (unsigned int i = 0; i < key_size_; ++i) {

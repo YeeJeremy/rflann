@@ -48,6 +48,7 @@
 #include "flann/util/random.h"
 #include "flann/util/saving.h"
 
+inline int randWrapper2(const int n) { return floor(R::unif_rand()*n); }
 
 namespace flann
 {
@@ -266,7 +267,7 @@ protected:
         /* Construct the randomized trees. */
         for (int i = 0; i < trees_; i++) {
             /* Randomize the order of vectors to allow for unbiased sampling. */
-            std::random_shuffle(ind.begin(), ind.end());
+          std::random_shuffle(ind.begin(), ind.end(), randWrapper2);
             tree_roots_[i] = divideTree(&ind[0], int(size_) );
         }
         delete[] mean_;

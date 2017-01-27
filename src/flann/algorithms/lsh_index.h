@@ -40,6 +40,7 @@
 #include <cstring>
 #include <map>
 #include <vector>
+#include <Rcpp.h>
 
 #include "flann/general.h"
 #include "flann/algorithms/nn_index.h"
