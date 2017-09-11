@@ -7,6 +7,7 @@
 #include <string>
 #include "flann/flann.hpp"
 
+//[[Rcpp::export]]
 Rcpp::List RadiusSearch(Rcpp::NumericMatrix query_,
                         Rcpp::NumericMatrix ref_,
                         double radius,
@@ -54,35 +55,4 @@ Rcpp::List RadiusSearch(Rcpp::NumericMatrix query_,
                      search_params);
   return Rcpp::List::create(Rcpp::Named("indices") = indices_flann,
                             Rcpp::Named("distances") = dists_flann);
-}
-
-// Export to R
-RcppExport SEXP rflann_RadiusSearch(SEXP query_SEXP,
-                                    SEXP ref_SEXP,
-                                    SEXP radiusSEXP,
-                                    SEXP max_neighbourSEXP,
-                                    SEXP buildSEXP,
-                                    SEXP coresSEXP,
-                                    SEXP checksSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type
-        query_(query_SEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type
-        ref_(ref_SEXP);
-    Rcpp::traits::input_parameter< double >::type
-        radius(radiusSEXP);
-    Rcpp::traits::input_parameter< int >::type
-        max_neighbour(max_neighbourSEXP);
-    Rcpp::traits::input_parameter< std::string >::type
-        build(buildSEXP);
-    Rcpp::traits::input_parameter< int >::type
-        cores(coresSEXP);
-    Rcpp::traits::input_parameter< int >::type
-        checks(checksSEXP);
-    __result = Rcpp::wrap(RadiusSearch(query_, ref_, radius,
-                                       max_neighbour, build, cores, checks));
-    return __result;
-END_RCPP
 }
