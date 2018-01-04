@@ -43,7 +43,7 @@ RcppExport SEXP rflann_FastKDNeighbour(SEXP query_SEXP, SEXP ref_SEXP, SEXP kSEX
 }
 // Neighbour
 Rcpp::List Neighbour(Rcpp::NumericMatrix query_, Rcpp::NumericMatrix ref_, int k, std::string build, int cores, int checks);
-RcppExport SEXP rflann_Neighbour(SEXP query_SEXP, SEXP ref_SEXP, SEXP kSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
+RcppExport SEXP _rflann_Neighbour(SEXP query_SEXP, SEXP ref_SEXP, SEXP kSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -59,7 +59,7 @@ END_RCPP
 }
 // RadiusSearch
 Rcpp::List RadiusSearch(Rcpp::NumericMatrix query_, Rcpp::NumericMatrix ref_, double radius, int max_neighbour, std::string build, int cores, int checks);
-RcppExport SEXP rflann_RadiusSearch(SEXP query_SEXP, SEXP ref_SEXP, SEXP radiusSEXP, SEXP max_neighbourSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
+RcppExport SEXP _rflann_RadiusSearch(SEXP query_SEXP, SEXP ref_SEXP, SEXP radiusSEXP, SEXP max_neighbourSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -85,8 +85,21 @@ static int rflann_RcppExport_validate(const char* sig) {
 }
 
 // registerCCallable (register entry points for exported C++ functions)
-RcppExport SEXP rflann_RcppExport_registerCCallable() { 
+RcppExport SEXP _rflann_RcppExport_registerCCallable() { 
     R_RegisterCCallable("rflann", "rflann_FastKDNeighbour", (DL_FUNC)rflann_FastKDNeighbour_try);
     R_RegisterCCallable("rflann", "rflann_RcppExport_validate", (DL_FUNC)rflann_RcppExport_validate);
     return R_NilValue;
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"rflann_FastKDNeighbour", (DL_FUNC) &rflann_FastKDNeighbour, 3},
+    {"_rflann_Neighbour", (DL_FUNC) &_rflann_Neighbour, 6},
+    {"_rflann_RadiusSearch", (DL_FUNC) &_rflann_RadiusSearch, 7},
+    {"_rflann_RcppExport_registerCCallable", (DL_FUNC) &_rflann_RcppExport_registerCCallable, 0},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_rflann(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

@@ -35,7 +35,7 @@ namespace rflann {
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_FastKDNeighbour(Rcpp::wrap(query_), Rcpp::wrap(ref_), Rcpp::wrap(k));
+            rcpp_result_gen = p_FastKDNeighbour(Shield<SEXP>(Rcpp::wrap(query_)), Shield<SEXP>(Rcpp::wrap(ref_)), Shield<SEXP>(Rcpp::wrap(k)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();

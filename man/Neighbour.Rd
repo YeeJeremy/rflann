@@ -21,7 +21,7 @@ Neighbour(query, ref, k, build = "kdtree", cores = 0, checks = 1)
 }
 \value{
   List containing:
-  \item{indices}{Matrix containing the index of the nearest neighbours in
+  \item{indices}{Matrix containing the indices of the nearest neighbours in
     the reference set for each query set of points}
   \item{distances}{Matrix containing the distances to the nearest neighbours}
 }
