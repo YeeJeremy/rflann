@@ -10,27 +10,31 @@
 using namespace Rcpp;
 
 // FastKDNeighbour
-arma::imat FastKDNeighbour(Rcpp::NumericMatrix query_, Rcpp::NumericMatrix ref_, const std::size_t& k);
-static SEXP rflann_FastKDNeighbour_try(SEXP query_SEXP, SEXP ref_SEXP, SEXP kSEXP) {
+arma::imat FastKDNeighbour(Rcpp::NumericMatrix query, Rcpp::NumericMatrix ref, const std::size_t& k);
+static SEXP _rflann_FastKDNeighbour_try(SEXP querySEXP, SEXP refSEXP, SEXP kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type query_(query_SEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type ref_(ref_SEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type query(querySEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type ref(refSEXP);
     Rcpp::traits::input_parameter< const std::size_t& >::type k(kSEXP);
-    rcpp_result_gen = Rcpp::wrap(FastKDNeighbour(query_, ref_, k));
+    rcpp_result_gen = Rcpp::wrap(FastKDNeighbour(query, ref, k));
     return rcpp_result_gen;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP rflann_FastKDNeighbour(SEXP query_SEXP, SEXP ref_SEXP, SEXP kSEXP) {
+RcppExport SEXP _rflann_FastKDNeighbour(SEXP querySEXP, SEXP refSEXP, SEXP kSEXP) {
     SEXP rcpp_result_gen;
     {
         Rcpp::RNGScope rcpp_rngScope_gen;
-        rcpp_result_gen = PROTECT(rflann_FastKDNeighbour_try(query_SEXP, ref_SEXP, kSEXP));
+        rcpp_result_gen = PROTECT(_rflann_FastKDNeighbour_try(querySEXP, refSEXP, kSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
     if (rcpp_isInterrupt_gen) {
         UNPROTECT(1);
         Rf_onintr();
+    }
+    bool rcpp_isLongjump_gen = Rcpp::internal::isLongjumpSentinel(rcpp_result_gen);
+    if (rcpp_isLongjump_gen) {
+        Rcpp::internal::resumeJump(rcpp_result_gen);
     }
     Rboolean rcpp_isError_gen = Rf_inherits(rcpp_result_gen, "try-error");
     if (rcpp_isError_gen) {
@@ -42,41 +46,41 @@ RcppExport SEXP rflann_FastKDNeighbour(SEXP query_SEXP, SEXP ref_SEXP, SEXP kSEX
     return rcpp_result_gen;
 }
 // Neighbour
-Rcpp::List Neighbour(Rcpp::NumericMatrix query_, Rcpp::NumericMatrix ref_, int k, std::string build, int cores, int checks);
-RcppExport SEXP _rflann_Neighbour(SEXP query_SEXP, SEXP ref_SEXP, SEXP kSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
+Rcpp::List Neighbour(Rcpp::NumericMatrix query, Rcpp::NumericMatrix ref, int k, std::string build, int cores, int checks);
+RcppExport SEXP _rflann_Neighbour(SEXP querySEXP, SEXP refSEXP, SEXP kSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type query_(query_SEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type ref_(ref_SEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type query(querySEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type ref(refSEXP);
     Rcpp::traits::input_parameter< int >::type k(kSEXP);
     Rcpp::traits::input_parameter< std::string >::type build(buildSEXP);
     Rcpp::traits::input_parameter< int >::type cores(coresSEXP);
     Rcpp::traits::input_parameter< int >::type checks(checksSEXP);
-    rcpp_result_gen = Rcpp::wrap(Neighbour(query_, ref_, k, build, cores, checks));
+    rcpp_result_gen = Rcpp::wrap(Neighbour(query, ref, k, build, cores, checks));
     return rcpp_result_gen;
 END_RCPP
 }
 // RadiusSearch
-Rcpp::List RadiusSearch(Rcpp::NumericMatrix query_, Rcpp::NumericMatrix ref_, double radius, int max_neighbour, std::string build, int cores, int checks);
-RcppExport SEXP _rflann_RadiusSearch(SEXP query_SEXP, SEXP ref_SEXP, SEXP radiusSEXP, SEXP max_neighbourSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
+Rcpp::List RadiusSearch(Rcpp::NumericMatrix query, Rcpp::NumericMatrix ref, double radius, int max_neighbour, std::string build, int cores, int checks);
+RcppExport SEXP _rflann_RadiusSearch(SEXP querySEXP, SEXP refSEXP, SEXP radiusSEXP, SEXP max_neighbourSEXP, SEXP buildSEXP, SEXP coresSEXP, SEXP checksSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type query_(query_SEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type ref_(ref_SEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type query(querySEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type ref(refSEXP);
     Rcpp::traits::input_parameter< double >::type radius(radiusSEXP);
     Rcpp::traits::input_parameter< int >::type max_neighbour(max_neighbourSEXP);
     Rcpp::traits::input_parameter< std::string >::type build(buildSEXP);
     Rcpp::traits::input_parameter< int >::type cores(coresSEXP);
     Rcpp::traits::input_parameter< int >::type checks(checksSEXP);
-    rcpp_result_gen = Rcpp::wrap(RadiusSearch(query_, ref_, radius, max_neighbour, build, cores, checks));
+    rcpp_result_gen = Rcpp::wrap(RadiusSearch(query, ref, radius, max_neighbour, build, cores, checks));
     return rcpp_result_gen;
 END_RCPP
 }
 
 // validate (ensure exported C++ functions exist before calling them)
-static int rflann_RcppExport_validate(const char* sig) { 
+static int _rflann_RcppExport_validate(const char* sig) { 
     static std::set<std::string> signatures;
     if (signatures.empty()) {
         signatures.insert("arma::imat(*FastKDNeighbour)(Rcpp::NumericMatrix,Rcpp::NumericMatrix,const std::size_t&)");
@@ -86,13 +90,13 @@ static int rflann_RcppExport_validate(const char* sig) {
 
 // registerCCallable (register entry points for exported C++ functions)
 RcppExport SEXP _rflann_RcppExport_registerCCallable() { 
-    R_RegisterCCallable("rflann", "rflann_FastKDNeighbour", (DL_FUNC)rflann_FastKDNeighbour_try);
-    R_RegisterCCallable("rflann", "rflann_RcppExport_validate", (DL_FUNC)rflann_RcppExport_validate);
+    R_RegisterCCallable("rflann", "_rflann_FastKDNeighbour", (DL_FUNC)_rflann_FastKDNeighbour_try);
+    R_RegisterCCallable("rflann", "_rflann_RcppExport_validate", (DL_FUNC)_rflann_RcppExport_validate);
     return R_NilValue;
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"rflann_FastKDNeighbour", (DL_FUNC) &rflann_FastKDNeighbour, 3},
+    {"_rflann_FastKDNeighbour", (DL_FUNC) &_rflann_FastKDNeighbour, 3},
     {"_rflann_Neighbour", (DL_FUNC) &_rflann_Neighbour, 6},
     {"_rflann_RadiusSearch", (DL_FUNC) &_rflann_RadiusSearch, 7},
     {"_rflann_RcppExport_registerCCallable", (DL_FUNC) &_rflann_RcppExport_registerCCallable, 0},

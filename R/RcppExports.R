@@ -2,7 +2,15 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 FastKDNeighbour <- function(query, ref, k) {
-    .Call('rflann_FastKDNeighbour', PACKAGE = 'rflann', query, ref, k)
+    .Call('_rflann_FastKDNeighbour', PACKAGE = 'rflann', query, ref, k)
+}
+
+Neighbour <- function(query, ref, k, build, cores, checks) {
+    .Call('_rflann_Neighbour', PACKAGE = 'rflann', query, ref, k, build, cores, checks)
+}
+
+RadiusSearch <- function(query, ref, radius, max_neighbour, build, cores, checks) {
+    .Call('_rflann_RadiusSearch', PACKAGE = 'rflann', query, ref, radius, max_neighbour, build, cores, checks)
 }
 
 # Register entry points for exported C++ functions

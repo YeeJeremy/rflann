@@ -17,7 +17,7 @@ namespace rflann {
             require("rflann", Rcpp::Named("quietly") = true);
             typedef int(*Ptr_validate)(const char*);
             static Ptr_validate p_validate = (Ptr_validate)
-                R_GetCCallable("rflann", "rflann_RcppExport_validate");
+                R_GetCCallable("rflann", "_rflann_RcppExport_validate");
             if (!p_validate(sig)) {
                 throw Rcpp::function_not_exported(
                     "C++ function with signature '" + std::string(sig) + "' not found in rflann");
@@ -25,22 +25,24 @@ namespace rflann {
         }
     }
 
-    inline arma::imat FastKDNeighbour(Rcpp::NumericMatrix query_, Rcpp::NumericMatrix ref_, const std::size_t& k) {
+    inline arma::imat FastKDNeighbour(Rcpp::NumericMatrix query, Rcpp::NumericMatrix ref, const std::size_t& k) {
         typedef SEXP(*Ptr_FastKDNeighbour)(SEXP,SEXP,SEXP);
         static Ptr_FastKDNeighbour p_FastKDNeighbour = NULL;
         if (p_FastKDNeighbour == NULL) {
             validateSignature("arma::imat(*FastKDNeighbour)(Rcpp::NumericMatrix,Rcpp::NumericMatrix,const std::size_t&)");
-            p_FastKDNeighbour = (Ptr_FastKDNeighbour)R_GetCCallable("rflann", "rflann_FastKDNeighbour");
+            p_FastKDNeighbour = (Ptr_FastKDNeighbour)R_GetCCallable("rflann", "_rflann_FastKDNeighbour");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_FastKDNeighbour(Shield<SEXP>(Rcpp::wrap(query_)), Shield<SEXP>(Rcpp::wrap(ref_)), Shield<SEXP>(Rcpp::wrap(k)));
+            rcpp_result_gen = p_FastKDNeighbour(Shield<SEXP>(Rcpp::wrap(query)), Shield<SEXP>(Rcpp::wrap(ref)), Shield<SEXP>(Rcpp::wrap(k)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
         if (rcpp_result_gen.inherits("try-error"))
-            throw Rcpp::exception(as<std::string>(rcpp_result_gen).c_str());
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
         return Rcpp::as<arma::imat >(rcpp_result_gen);
     }
 

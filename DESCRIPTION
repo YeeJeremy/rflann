@@ -1,8 +1,8 @@
 Package: rflann
 Type: Package
 Title: Basic R Interface to the 'FLANN' C++ Library
-Version: 1.5
-Date: 2018-01-03
+Version: 1.6.0
+Date: 2018-09-06
 Author: Marius Muja, David Lowe and Jeremy Yee
 Maintainer: Jeremy Yee <jeremyyee@outlook.com.au>
 Description: Basic R interface for the 'FLANN' C++ library version 1.8.4 written by Marius Muja
@@ -14,3 +14,5 @@ LinkingTo: Rcpp, RcppArmadillo
 Includes: Rcpp
 NeedsCompilation: yes
 BugReports: https://github.com/YeeJeremy/rflann/issues
+RoxygenNote: 6.1.0
+Encoding: UTF-8 
