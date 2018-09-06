@@ -3,3 +3,4 @@
 ^README\.Rmd$
 ^rflann\.Rproj$
 ^\.Rproj\.user$
+R/RcppExports.R
