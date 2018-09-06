@@ -14,3 +14,4 @@ LinkingTo: Rcpp, RcppArmadillo
 Includes: Rcpp
 NeedsCompilation: yes
 BugReports: https://github.com/YeeJeremy/rflann/issues
+RoxygenNote: 6.1.0

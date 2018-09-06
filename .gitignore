@@ -1,4 +1,14 @@
+.Rproj.user
 /src/neighbour.o
 /src/radius_search.o
 /src/rflann.so
 /src/symbols.rds
+
+# things to ignore in directory rflann/src
+src/*.o
+src/*.o.macbook*
+src/*.o
+src/*.gcda
+src/*.gcno
+src/*.o-*
+src/*.so
