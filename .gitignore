@@ -1,4 +1,5 @@
 .Rproj.user
+.Rhistory
 /src/neighbour.o
 /src/radius_search.o
 /src/rflann.so
